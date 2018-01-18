@@ -85,26 +85,6 @@ public class AccountsController {
     return responseEntity;
   }
 
-  /*
-   * @PostMapping(path = "/transfer") public ResponseEntity<Object>
-   * transferAmount(@RequestParam String fromAccountId, @RequestParam String
-   * toAccountId,
-   * 
-   * @RequestParam BigDecimal amount) {
-   * log.info("Initiating transfer from acccount {} to {} of amount {}",
-   * fromAccountId, toAccountId, amount); ResponseEntity<Object> responseEntity;
-   * try { Account fromAccount = this.accountsService.getAccount(fromAccountId);
-   * Account toAccount = this.accountsService.getAccount(toAccountId);
-   * this.accountsService.transferAmount(fromAccount, toAccount, amount);
-   * notifyAccountOwners(fromAccount, toAccount, amount); responseEntity = new
-   * ResponseEntity<>(HttpStatus.ACCEPTED); } catch
-   * (TransactionInProgressException te) { responseEntity = new
-   * ResponseEntity<>(te.getMessage(), HttpStatus.CONFLICT); } catch
-   * (NegativeBalanceException ne) { responseEntity = new
-   * ResponseEntity<>(ne.getMessage(), HttpStatus.BAD_REQUEST); } return
-   * responseEntity; }
-   */
-
   private void notifyAccountOwners(Account fromAccount, Account toAccount, BigDecimal amount) {
     this.notificationService.notifyAboutTransfer(fromAccount,
         MessageFormat.format(withdrawalMessage, String.valueOf(amount)));
