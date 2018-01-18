@@ -1,0 +1,4 @@
+server:
+  port: 18080
+withdraw-message: Amount {0} has been Withdrawn
+deposit-message: Amount {0} has been Deposited
